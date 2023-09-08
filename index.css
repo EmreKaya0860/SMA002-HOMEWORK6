@@ -1,0 +1,58 @@
+body {
+  background-color: #383838;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+}
+
+.header {
+  height: 90vh;
+  display: flex;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.carouselContainer {
+  position: absolute;
+  width: 60%;
+}
+
+.splide__slide {
+  padding: 0 10px;
+}
+
+.splide__slide img {
+  width: 100%;
+  height: auto;
+}
+
+.alive {
+  color: green;
+}
+.dead {
+  color: red;
+}
+.unknown {
+  color: gray;
+}
+
+.slideInfo {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  justify-content: space-between;
+}
+
+.splide__pagination {
+  position: relative;
+  margin-top: 2%;
+}

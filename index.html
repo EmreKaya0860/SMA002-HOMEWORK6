@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="getCharacters.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js "></script>
+    <link
+      href=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css "
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <title>SMA002-HOMEWORK6</title>
+  </head>
+  <body>
+    <h1 class="header">Rick And Morty Slider</h1>
+    <div class="carouselContainer">
+      <section id="image-carousel" class="splide" aria-label="Beautiful Images">
+        <div class="splide__track">
+          <ul class="splide__list" id="imageList"></ul>
+        </div>
+      </section>
+    </div>
+    <script>
+      getCharacters().then((characters) => {
+        characters.forEach((character) => {
+          let statusDot = "";
+          if (character.status === "Alive") {
+            statusDot = '<span class="alive">●</span>';
+          } else if (character.status === "Dead") {
+            statusDot = '<span class="dead">●</span>';
+          } else {
+            statusDot = '<span class="unknown">●</span>';
+          }
+
+          document.getElementById("imageList").innerHTML += `
+        <li class="splide__slide">
+            <img src="${character.image}" alt="" />
+            <div class="slideInfo">
+                <h3>${character.name}</h3>
+                <h3>${statusDot}${character.status} - ${character.species}</h3>
+
+            </div>
+        </li>
+        `;
+        });
+        new Splide("#image-carousel", {
+          type: "loop",
+          drag: "free",
+          snap: true,
+          perPage: 3,
+          spaceBetween: 10,
+        }).mount();
+        console.log("html den: ", characters);
+      });
+    </script>
+  </body>
+</html>
